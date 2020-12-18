@@ -62,8 +62,8 @@ public class SM2EncDecUtils {
         Midway mid = new Midway();//输出中间过程
         String filename = "加密";
         mid.Write2File(filename,"在曲线上的点c1:"+c1.toString()+"\n");
-        mid.Write2File(filename,"c2:"+new String(source)+"\n");
-        mid.Write2File(filename,"c3:"+new String(c3)+"\n");
+        mid.Write2File(filename,"c2:"+ Util.byteToHex(source) +"\n");
+        mid.Write2File(filename,"c3:"+ Util.byteToHex(c3) +"\n");
         mid.Write2File(filename,"用户的公钥在曲线上对应的点："+userKey.toString()+"\n\n");
 
 
@@ -126,8 +126,8 @@ public class SM2EncDecUtils {
 
         mid.Write2File(filename,"用户的秘钥在曲线上对应的点："+cipher.getP2().toString()+"\n");
         mid.Write2File(filename,"c1对应的点:"+c1.toString()+"\n");
-        mid.Write2File(filename,"c2:"+new String(c2)+"\n");
-        mid.Write2File(filename,"c3:"+new String(c3)+"\n\n");
+        mid.Write2File(filename,"c2:"+ Util.byteToHex(c2) +"\n");
+        mid.Write2File(filename,"c3:"+ Util.byteToHex(c3) +"\n\n");
         //返回解密结果
         return c2;
     }
@@ -154,7 +154,7 @@ public class SM2EncDecUtils {
         //prik=privatekey;
         //pubk=publicKey;
         System.out.println("加密: ");
-        String cipherText = SM2EncDecUtils.encrypt(Util.hexToByte(key.getPubHexInSoft().toString()), sourceData);
+        String cipherText = SM2EncDecUtils.encrypt(Util.hexToByte(key.getPubHexInSoft()), sourceData);
         //cipherText = "0452ba81cf5119c9f29c81c2be9c4a49ad8c0a33ed899b60548d21a62971a8e994cafc0e9fbc710a0a220b055804bb890833b50ac04ec4e130a5db75338c0c1d49a52a6d373076a5db370564a5cebb5300f79877003c52adf49dac16370e51e14e0754110547bb3b";
         System.out.println(cipherText);
         System.out.println("解密: ");
