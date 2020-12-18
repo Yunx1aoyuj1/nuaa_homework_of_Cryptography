@@ -64,7 +64,7 @@ public class SM2EncDecUtils {
         mid.Write2File(filename,"在曲线上的点c1:"+c1.toString()+"\n");
         mid.Write2File(filename,"c2:"+new String(source)+"\n");
         mid.Write2File(filename,"c3:"+new String(c3)+"\n");
-        mid.Write2File(filename,"用户的公钥在曲线上对应的点："+userKey.toString()+"\n");
+        mid.Write2File(filename,"用户的公钥在曲线上对应的点："+userKey.toString()+"\n\n");
 
 
 //      System.out.println("C1 " + Util.byteToHex(c1.getEncoded()));
@@ -127,7 +127,7 @@ public class SM2EncDecUtils {
         mid.Write2File(filename,"用户的秘钥在曲线上对应的点："+cipher.getP2().toString()+"\n");
         mid.Write2File(filename,"c1对应的点:"+c1.toString()+"\n");
         mid.Write2File(filename,"c2:"+new String(c2)+"\n");
-        mid.Write2File(filename,"c3:"+new String(c3)+"\n");
+        mid.Write2File(filename,"c3:"+new String(c3)+"\n\n");
         //返回解密结果
         return c2;
     }

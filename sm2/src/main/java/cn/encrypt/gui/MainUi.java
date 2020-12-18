@@ -170,7 +170,7 @@ public class MainUi extends JFrame implements ActionListener {
 
 
     void encrypt() throws IOException {//加密
-        if( jtf1.getText().isEmpty()||jtf1.getText().isEmpty()){
+        if( jtf1.getText().isEmpty()||jtf2.getText().isEmpty()){
 
             JOptionPane.showMessageDialog(null, "有参数为空！", "失败", JOptionPane.WARNING_MESSAGE);
         }else {
