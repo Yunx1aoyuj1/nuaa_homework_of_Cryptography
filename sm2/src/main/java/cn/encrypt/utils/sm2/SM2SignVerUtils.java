@@ -12,11 +12,20 @@ import java.util.Enumeration;
 /**
  * 国密算法的签名、验签
  */
+
 public class SM2SignVerUtils {
 	/**
 	 * 默认USERID
 	 */
 	public static String USER_ID = "1234567812345678";
+	/**
+	 *商密文档中要求，签名者用户A具有长度为entlenA比特的可辨别标识IDA，
+	 * 这里我认为是指定颁发的，因为长度不能随便设置
+	 * 当然写个hash函数也行，但是这应该是没使用签名前的事
+	 * 所以这里认为是指定的
+	 */
+
+
 	/**
 	 * 私钥签名
 	 * 使用SM3进行对明文数据计算一个摘要值
@@ -25,7 +34,7 @@ public class SM2SignVerUtils {
 	 * @return 签名后的值
 	 * @throws Exception
 	 */
-	public static SM2SignVO Sign2SM2(byte[] privatekey,byte[] sourceData) throws Exception{
+	public static SM2SignVO Sign2SM2(byte[] privatekey, byte[] sourceData) throws Exception{
 		SM2SignVO sm2SignVO = new SM2SignVO();
 		sm2SignVO.setSm2_type("sign");
 		SM2Factory factory = SM2Factory.getInstance();
@@ -76,7 +85,7 @@ public class SM2SignVerUtils {
 	 * @return 验签的对象 包含了相关参数和验签结果
 	 */
 	@SuppressWarnings("unchecked")
-	public static SM2SignVO VerifySignSM2(byte[] publicKey,byte[] sourceData,byte[] signData){
+	public static SM2SignVO VerifySignSM2(byte[] publicKey, byte[] sourceData, byte[] signData){
 		try {
 			byte[] formatedPubKey;
 			SM2SignVO verifyVo = new SM2SignVO();
@@ -127,7 +136,7 @@ public class SM2SignVerUtils {
 			return null;
 		}
 	}
-	public static void main(String[] args) throws Exception {
+	public void main(String[] args) throws Exception {
 		String text = "这是一段明文";
 		byte [] sourceData = text.getBytes();
 		//String publicKey ="FA05C51AD1162133DFDF862ECA5E4A481B52FB37FF83E53D45FD18BBD6F32668A92C4692EEB305684E3B9D4ACE767F91D5D108234A9F07936020A92210BA9447";
