@@ -12,6 +12,9 @@ import org.bouncycastle.math.ec.ECPoint;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
+/*
+* 椭圆曲线
+* */
 public class SM2 {
 
     //国密参数

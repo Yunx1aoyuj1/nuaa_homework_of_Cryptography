@@ -9,7 +9,9 @@ import org.bouncycastle.math.ec.ECPoint;
 
 import java.io.IOException;
 import java.math.BigInteger;
-
+/*
+* 加解密
+* */
 public class SM2EncDecUtils {
     //生成随机秘钥对
     public static SM2KeyVO generateKeyPair(){
@@ -116,7 +118,9 @@ public class SM2EncDecUtils {
 
     public static void main(String[] args) throws Exception
     {
-        String plainText = "ILoveYou11";
+        //String plainText = "ILoveYou11";
+        String plainText = "加密";
+        System.out.print(plainText);
         //SM3测试
         //生成密钥对
         SM2KeyVO key = generateKeyPair();

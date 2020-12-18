@@ -23,7 +23,8 @@ import java.io.IOException;
 public class CreateUi extends JFrame {
     //定义组件
     JPanel jp1,jp2,jp3=null;
-    JLabel jlb1,jlb2,jlb3,jlb4,jlb5,jlb6=null;
+    JLabel jlb2,jlb3,jlb4,jlb5=null;
+    JTextArea jta1,jta2=null;
 
     public static void main(String[] args) throws IOException {
         CreateUi  ui=new CreateUi();
@@ -49,8 +50,8 @@ public class CreateUi extends JFrame {
 
         //System.out.print(key.getPubHexInSoft().toString()+"\n");
 
-        jlb4=new JLabel(key.getPubHexInSoft().toString());
-        jlb5=new JLabel(key.getPriHexInSoft().toString());
+        jta1 =new JTextArea(key.getPubHexInSoft().toString(),1,30);
+        jta2 =new JTextArea(key.getPriHexInSoft().toString(),1,30);
 
 
 
@@ -59,11 +60,11 @@ public class CreateUi extends JFrame {
 
 
         jp2.add(jlb2);
-        jp2.add(jlb4);
+        jp2.add(jta1);
 
 
         jp3.add(jlb3);
-        jp3.add(jlb5);
+        jp3.add(jta2);
 
 
         //this.add(jp1);
@@ -72,7 +73,7 @@ public class CreateUi extends JFrame {
 
 
         //设置布局管理器
-        this.setLayout(new GridLayout(3,3));
+        this.setLayout(new GridLayout(2,2));
         this.setTitle("秘钥生成");
         this.setSize(800,400);
         this.setLocation(200, 200);

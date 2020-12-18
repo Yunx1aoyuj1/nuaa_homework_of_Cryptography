@@ -18,6 +18,7 @@ import org.bouncycastle.crypto.digests.SM3Digest;
 import org.bouncycastle.util.encoders.Hex;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 public class VerifyUi extends JFrame {
     //定义组件
@@ -42,18 +43,24 @@ public class VerifyUi extends JFrame {
         jp3=new JPanel();
 
         jlb1=new JLabel("原文：");
-        jlb2=new JLabel("公钥：");
-        jlb3=new JLabel("秘文：");
+        jlb2=new JLabel("验证秘钥：");
+        jlb3=new JLabel("是否一致");
 
 
         jlb4=new JLabel(Massage);
         jlb5=new JLabel(Ppk);
         //System.out.print(Psk+"\n");
-        String massage = Util.byteToHex(Massage.getBytes());
-        //Boolean bool = verifySM2Signature(Ppk,massage,);
+        String Massage_utf8 = URLEncoder.encode(Massage, "utf-8");//utf-8 to string
+        String massage = Util.byteToHex(Massage_utf8.getBytes());
+        Boolean bool = verifySM2Signature(Ppk,massage,sign);
 
         //System.out.print(cipherText+"\n");
-        //jlb6=new JLabel(sign.getSm2_signForSoft());
+        if(bool.booleanValue() == Boolean.TRUE){
+            jlb6=new JLabel("一致");
+        }
+        else{
+            jlb6=new JLabel("不一致");
+        }
 
         jp1.add(jlb1);
         jp1.add(jlb4);

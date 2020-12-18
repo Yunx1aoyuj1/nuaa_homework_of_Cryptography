@@ -9,6 +9,9 @@ import org.bouncycastle.math.ec.ECPoint;
 
 import java.math.BigInteger;
 
+/*
+* 密码
+* */
 public class Cipher {
     private int ct;
     private ECPoint p2;
