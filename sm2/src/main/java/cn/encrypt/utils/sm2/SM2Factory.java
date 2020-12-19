@@ -42,6 +42,7 @@ public class SM2Factory {
 	public final ECPoint ecc_point_g;
 	public final ECDomainParameters ecc_bc_spec;
 	public final ECKeyPairGenerator ecc_key_pair_generator;
+
 	/**
 	 * 初始化方法
 	 * @return

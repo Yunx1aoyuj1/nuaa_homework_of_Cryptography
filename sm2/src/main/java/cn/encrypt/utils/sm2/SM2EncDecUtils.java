@@ -132,6 +132,40 @@ public class SM2EncDecUtils {
         return c2;
     }
 
+    public void test()throws Exception {
+        //String plainText = "ILoveYou11";
+        String plainText = "abab";
+
+        long startTime = System.currentTimeMillis(); //程序开始记录时间
+        //生成密钥对
+        SM2KeyVO key = generateKeyPair(); ;
+        byte[] sourceData = plainText.getBytes();
+
+        //下面的秘钥可以使用generateKeyPair()生成的秘钥内容
+        // 国密规范正式私钥
+        //String prik = "3690655E33D5EA3D9A4AE1A1ADD766FDEA045CDEAA43A9206FB8C430CEFE0D94";
+        // 国密规范正式公钥
+        //String pubk = "04F6E0C3345AE42B51E06BF50B98834988D54EBC7460FE135A48171BC0629EAE205EEDE253A530608178A98F1E19BB737302813BA39ED3FA3C51639D7A20C7391A";
+
+        //String prik = "4cf170068e9c47ebdb521fb9fc62c4a55a5773fb9da33b0acf8129e28d09d205";
+        //String pubk = "04aabda53043e8dcb86d42f690b61a4db869821dadf9f851ec3c5c43d0c8f95a6677fdba984afc3bb010a8436b1d17cefc2011a34e01e9e801124d29ffa928d803";
+        //String publicKey ="04BB34D657EE7E8490E66EF577E6B3CEA28B739511E787FB4F71B7F38F241D87F18A5A93DF74E90FF94F4EB907F271A36B295B851F971DA5418F4915E2C1A23D6E";
+        // String privatekey = "0B1CE43098BC21B8E82B5C065EDB534CB86532B1900A49D49F3C53762D2997FA";
+        //prik=privatekey;
+        //pubk=publicKey;
+        System.out.println("加密: ");
+        String cipherText = SM2EncDecUtils.encrypt(Util.hexToByte(key.getPubHexInSoft()), sourceData);
+        //cipherText = "0452ba81cf5119c9f29c81c2be9c4a49ad8c0a33ed899b60548d21a62971a8e994cafc0e9fbc710a0a220b055804bb890833b50ac04ec4e130a5db75338c0c1d49a52a6d373076a5db370564a5cebb5300f79877003c52adf49dac16370e51e14e0754110547bb3b";
+        System.out.println(cipherText);
+        System.out.println("解密: ");
+        plainText = new String(SM2EncDecUtils.decrypt(Util.hexToByte(key.getPriHexInSoft()), Util.hexToByte(cipherText)));
+        System.out.println(plainText);
+        long endTime = System.currentTimeMillis(); //程序结束记录时间
+        long TotalTime = endTime - startTime; //总消耗时间
+
+        System.out.print(TotalTime);
+    }
+
     public static void main(String[] args) throws Exception {
         //String plainText = "ILoveYou11";
         String plainText = "abab";
@@ -165,4 +199,5 @@ public class SM2EncDecUtils {
 
         System.out.print(TotalTime);
     }
+
 }
