@@ -170,7 +170,7 @@ public class SM2EncDecUtils {
         //String plainText = "ILoveYou11";
         String plainText = "abab";
 
-        long startTime = System.currentTimeMillis(); //程序开始记录时间
+        //long startTime = System.currentTimeMillis(); //程序开始记录时间
         //生成密钥对
         SM2KeyVO key = generateKeyPair(); ;
         byte[] sourceData = plainText.getBytes();
@@ -187,6 +187,7 @@ public class SM2EncDecUtils {
        // String privatekey = "0B1CE43098BC21B8E82B5C065EDB534CB86532B1900A49D49F3C53762D2997FA";
         //prik=privatekey;
         //pubk=publicKey;
+        long startTime = System.currentTimeMillis(); //程序开始记录时间
         System.out.println("加密: ");
         String cipherText = SM2EncDecUtils.encrypt(Util.hexToByte(key.getPubHexInSoft()), sourceData);
         //cipherText = "0452ba81cf5119c9f29c81c2be9c4a49ad8c0a33ed899b60548d21a62971a8e994cafc0e9fbc710a0a220b055804bb890833b50ac04ec4e130a5db75338c0c1d49a52a6d373076a5db370564a5cebb5300f79877003c52adf49dac16370e51e14e0754110547bb3b";

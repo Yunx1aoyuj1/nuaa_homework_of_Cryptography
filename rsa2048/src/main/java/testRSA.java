@@ -8,7 +8,7 @@ public class testRSA {
     public static final String DATA = "abab";
 
     public static void main(String[] args) throws Exception {
-        long startTime = System.currentTimeMillis(); //程序开始记录时间
+        //long startTime = System.currentTimeMillis(); //程序开始记录时间
         Map<String, Object> keyMap = RSAUtil.initKey();
 
         RSAPublicKey rsaPublicKey = RSAUtil.getpublicKey(keyMap);
@@ -16,6 +16,7 @@ public class testRSA {
         System.out.println("RSA PublicKey: " + rsaPublicKey);
         System.out.println("RSA PrivateKey: " + rsaPrivateKey);
 
+        long startTime = System.currentTimeMillis(); //程序开始记录时间
         byte[] rsaResult = RSAUtil.encrypt(DATA.getBytes(), rsaPublicKey);
         System.out.println(DATA + "====>>>> RSA 加密>>>>====" + BytesToHex.fromBytesToHex(rsaResult));
 
@@ -34,6 +35,7 @@ public class testRSA {
         RSAPrivateKey rsaPrivateKey = RSAUtil.getPrivateKey(keyMap);
         System.out.println("RSA PublicKey: " + rsaPublicKey);
         System.out.println("RSA PrivateKey: " + rsaPrivateKey);
+        //long startTime = System.currentTimeMillis(); //程序开始记录时间
 
         byte[] rsaResult = RSAUtil.encrypt(DATA.getBytes(), rsaPublicKey);
         System.out.println(DATA + "====>>>> RSA 加密>>>>====" + BytesToHex.fromBytesToHex(rsaResult));
